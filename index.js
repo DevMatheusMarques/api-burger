@@ -1,9 +1,11 @@
 const express = require('express');
 const cors = require('cors');
+const fs = require('fs');
 const app = express();
-const data = require('./db.json');
+let data = require('./db.json');
 
-app.use(cors());  // Adicione esta linha para habilitar CORS
+app.use(cors());
+app.use(express.json());
 
 app.use((req, res, next) => {
     console.log(`${req.method} ${req.url}`);
@@ -23,15 +25,36 @@ app.get('/status', (req, res) => {
 });
 
 app.post('/ingredientes', (req, res) => {
-    res.json(data.ingredientes);
+    const newIngrediente = req.body;
+    data.ingredientes.push(newIngrediente);
+    fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
+        if (err) {
+            return res.status(500).json({ error: 'Failed to save data' });
+        }
+        res.status(201).json(newIngrediente);
+    });
 });
 
 app.post('/burgers', (req, res) => {
-    res.json(data.burgers);
+    const newBurger = req.body;
+    data.burgers.push(newBurger);
+    fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
+        if (err) {
+            return res.status(500).json({ error: 'Failed to save data' });
+        }
+        res.status(201).json(newBurger);
+    });
 });
 
 app.post('/status', (req, res) => {
-    res.json(data.status);
+    const newStatus = req.body;
+    data.status.push(newStatus);
+    fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
+        if (err) {
+            return res.status(500).json({ error: 'Failed to save data' });
+        }
+        res.status(201).json(newStatus);
+    });
 });
 
 const port = process.env.PORT || 3000;
