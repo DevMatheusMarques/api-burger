@@ -26,9 +26,11 @@ app.get('/status', (req, res) => {
 
 app.post('/ingredientes', (req, res) => {
     const newIngrediente = req.body;
+    console.log('Received new ingrediente:', newIngrediente); // Log the received data
     data.ingredientes.push(newIngrediente);
     fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
         if (err) {
+            console.error('Failed to save data:', err); // Log the error
             return res.status(500).json({ error: 'Failed to save data' });
         }
         res.status(201).json(newIngrediente);
@@ -37,9 +39,12 @@ app.post('/ingredientes', (req, res) => {
 
 app.post('/burgers', (req, res) => {
     const newBurger = req.body;
+    newBurger.id = data.burgers.length ? data.burgers[data.burgers.length - 1].id + 1 : 1; // Adiciona um ID único
+    console.log('Received new burger:', newBurger); // Log the received data
     data.burgers.push(newBurger);
     fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
         if (err) {
+            console.error('Failed to save data:', err); // Log the error
             return res.status(500).json({ error: 'Failed to save data' });
         }
         res.status(201).json(newBurger);
@@ -48,9 +53,11 @@ app.post('/burgers', (req, res) => {
 
 app.post('/status', (req, res) => {
     const newStatus = req.body;
+    console.log('Received new status:', newStatus); // Log the received data
     data.status.push(newStatus);
     fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
         if (err) {
+            console.error('Failed to save data:', err); // Log the error
             return res.status(500).json({ error: 'Failed to save data' });
         }
         res.status(201).json(newStatus);
