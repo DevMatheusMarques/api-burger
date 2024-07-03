@@ -28,9 +28,6 @@ app.post('/ingredientes', (req, res) => {
     const newIngrediente = req.body;
     data.ingredientes.push(newIngrediente);
     fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
-        if (err) {
-            return res.status(500).json({ error: 'Failed to save data' });
-        }
         res.status(201).json(newIngrediente);
     });
 });
@@ -52,9 +49,6 @@ app.post('/burgers', (req, res) => {
 
 
     fs.writeFile('db.json', JSON.stringify(data, null, 2), (err) => {
-        // if (err) {
-        //     return res.status(500).json({ error: 'Failed to save data' });
-        // }
         res.status(201).json(newBurger);
     });
 });
@@ -63,9 +57,6 @@ app.post('/status', (req, res) => {
     const newStatus = req.body;
     data.status.push(newStatus);
     fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
-        if (err) {
-            return res.status(500).json({ error: 'Failed to save data' });
-        }
         res.status(201).json(newStatus);
     });
 });
