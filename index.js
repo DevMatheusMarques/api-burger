@@ -12,6 +12,7 @@ app.use((req, res, next) => {
     next();
 });
 
+// GET endpoints
 app.get('/ingredientes', (req, res) => {
     res.json(data.ingredientes);
 });
@@ -24,6 +25,7 @@ app.get('/status', (req, res) => {
     res.json(data.status);
 });
 
+// POST endpoints
 app.post('/ingredientes', (req, res) => {
     const newIngrediente = req.body;
     data.ingredientes.push(newIngrediente);
@@ -47,8 +49,7 @@ app.post('/burgers', (req, res) => {
 
     data.burgers.push(newBurger);
 
-
-    fs.writeFile('db.json', JSON.stringify(data, null, 2), (err) => {
+    fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
         res.status(201).json(newBurger);
     });
 });
@@ -58,6 +59,101 @@ app.post('/status', (req, res) => {
     data.status.push(newStatus);
     fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
         res.status(201).json(newStatus);
+    });
+});
+
+// PUT endpoints
+app.put('/ingredientes/:id', (req, res) => {
+    const { id } = req.params;
+    const updatedIngrediente = req.body;
+
+    const index = data.ingredientes.findIndex(i => i.id == id);
+    if (index === -1) {
+        return res.status(404).json({ error: 'Ingrediente not found' });
+    }
+
+    data.ingredientes[index] = { ...data.ingredientes[index], ...updatedIngrediente };
+
+    fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
+        res.json(data.ingredientes[index]);
+    });
+});
+
+app.put('/burgers/:id', (req, res) => {
+    const { id } = req.params;
+    const updatedBurger = req.body;
+
+    const index = data.burgers.findIndex(b => b.id == id);
+    if (index === -1) {
+        return res.status(404).json({ error: 'Burger not found' });
+    }
+
+    data.burgers[index] = { ...data.burgers[index], ...updatedBurger };
+
+    fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
+        res.json(data.burgers[index]);
+    });
+});
+
+app.put('/status/:id', (req, res) => {
+    const { id } = req.params;
+    const updatedStatus = req.body;
+
+    const index = data.status.findIndex(s => s.id == id);
+    if (index === -1) {
+        return res.status(404).json({ error: 'Status not found' });
+    }
+
+    data.status[index] = { ...data.status[index], ...updatedStatus };
+
+    fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
+        res.json(data.status[index]);
+    });
+});
+
+// DELETE endpoints
+app.delete('/ingredientes/:id', (req, res) => {
+    const { id } = req.params;
+
+    const index = data.ingredientes.findIndex(i => i.id == id);
+    if (index === -1) {
+        return res.status(404).json({ error: 'Ingrediente not found' });
+    }
+
+    const deletedIngrediente = data.ingredientes.splice(index, 1);
+
+    fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
+        res.json(deletedIngrediente);
+    });
+});
+
+app.delete('/burgers/:id', (req, res) => {
+    const { id } = req.params;
+
+    const index = data.burgers.findIndex(b => b.id == id);
+    if (index === -1) {
+        return res.status(404).json({ error: 'Burger not found' });
+    }
+
+    const deletedBurger = data.burgers.splice(index, 1);
+
+    fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
+        res.json(deletedBurger);
+    });
+});
+
+app.delete('/status/:id', (req, res) => {
+    const { id } = req.params;
+
+    const index = data.status.findIndex(s => s.id == id);
+    if (index === -1) {
+        return res.status(404).json({ error: 'Status not found' });
+    }
+
+    const deletedStatus = data.status.splice(index, 1);
+
+    fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
+        res.json(deletedStatus);
     });
 });
 
