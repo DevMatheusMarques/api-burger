@@ -49,12 +49,14 @@ app.post('/burgers', (req, res) => {
     };
 
     data.burgers.push(newBurger);
-    // fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
-    //     if (err) {
-    //         return res.status(500).json({ error: 'Failed to save data' });
-    //     }
-    //     res.status(201).json(newBurger);
-    // });
+
+
+    fs.writeFile('db.json', JSON.stringify(data, null, 2), (err) => {
+        if (err) {
+            return res.status(500).json({ error: 'Failed to save data' });
+        }
+        res.status(201).json(newBurger);
+    });
 });
 
 app.post('/status', (req, res) => {
