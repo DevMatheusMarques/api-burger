@@ -22,6 +22,18 @@ app.get('/status', (req, res) => {
     res.json(data.status);
 });
 
+app.post('/ingredientes', (req, res) => {
+    res.json(data.ingredientes);
+});
+
+app.post('/burgers', (req, res) => {
+    res.json(data.burgers);
+});
+
+app.post('/status', (req, res) => {
+    res.json(data.status);
+});
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
