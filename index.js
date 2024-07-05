@@ -35,7 +35,7 @@ app.post('/ingredientes', (req, res) => {
 });
 
 app.post('/burgers', (req, res) => {
-    const { nome, pao, carne, opcionais, status } = req.body;
+    const { nome, pao, carne, opcionais, status, dataHora } = req.body;
     const id = data.burgers.length ? data.burgers[data.burgers.length - 1].id + 1 : 1;
 
     const newBurger = {
@@ -44,7 +44,8 @@ app.post('/burgers', (req, res) => {
         carne,
         pao,
         opcionais,
-        status
+        status,
+        dataHora
     };
 
     data.burgers.push(newBurger);
