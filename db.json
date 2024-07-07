@@ -1,67 +1,83 @@
 {
   "ingredientes": {
+    "categorias": {
     "paes": [
       {
         "id": 1,
-        "tipo": "Italiano Branco"
+        "tipo": "Italiano Branco",
+        "quantidade": 20
       },
       {
         "id": 2,
-        "tipo": "3 Queijos"
+        "tipo": "3 Queijos",
+        "quantidade": 15
       },
       {
         "id": 3,
-        "tipo": "Parmesão e Orégano"
+        "tipo": "Parmesão e Orégano",
+        "quantidade": 25
       },
       {
         "id": 4,
-        "tipo": "Integral"
+        "tipo": "Integral",
+        "quantidade": 10
       }
     ],
     "carnes": [
       {
         "id": 1,
-        "tipo": "Maminha"
+        "tipo": "Maminha",
+        "quantidade": 20
       },
       {
         "id": 2,
-        "tipo": "Alcatra"
+        "tipo": "Alcatra",
+        "quantidade": 25
       },
       {
         "id": 3,
-        "tipo": "Picanha"
+        "tipo": "Picanha",
+        "quantidade": 30
       },
       {
         "id": 4,
-        "tipo": "Veggie burger"
+        "tipo": "Veggie burger",
+        "quantidade": 16
       }
     ],
     "opcionais": [
       {
         "id": 1,
-        "tipo": "Bacon"
+        "tipo": "Bacon",
+        "quantidade": 20
       },
       {
         "id": 2,
-        "tipo": "Cheddar"
+        "tipo": "Cheddar",
+        "quantidade": 25
       },
       {
         "id": 3,
-        "tipo": "Salame"
+        "tipo": "Salame",
+        "quantidade": 18
       },
       {
         "id": 4,
-        "tipo": "Tomate"
+        "tipo": "Tomate",
+        "quantidade": 22
       },
       {
         "id": 4,
-        "tipo": "Cebola roxa"
+        "tipo": "Cebola roxa",
+        "quantidade": 24
       },
       {
         "id": 4,
-        "tipo": "Pepino"
+        "tipo": "Pepino",
+        "quantidade": 12
       }
     ]
+    }
   },
   "status": [
     {
@@ -87,7 +103,8 @@
         "Bacon",
         "Cheddar"
       ],
-      "status": "Em produção"
+      "status": "Em produção",
+      "dataHora": "06/07/2024 19:50:31"
     },
     {
       "id": "87ad",
@@ -100,7 +117,8 @@
         "Cebola roxa",
         "Tomate"
       ],
-      "status": "Solicitado"
+      "status": "Solicitado",
+      "dataHora": "06/07/2024 19:50:31"
     },
     {
       "id": "24b3",
@@ -113,7 +131,8 @@
         "Cebola roxa",
         "Tomate"
       ],
-      "status": "Solicitado"
+      "status": "Solicitado",
+      "dataHora": "06/07/2024 19:50:31"
     },
     {
       "id": "a042",
@@ -121,7 +140,8 @@
       "pao": "Italiano Branco",
       "carne": "Maminha",
       "opcionais": [],
-      "status": "Solicitado"
+      "status": "Solicitado",
+      "dataHora": "06/07/2024 19:50:31"
     },
     {
       "id": "a430",
@@ -129,7 +149,8 @@
       "pao": "Italiano Branco",
       "carne": "Veggie burger",
       "opcionais": [],
-      "status": "Solicitado"
+      "status": "Solicitado",
+      "dataHora": "06/07/2024 19:50:31"
     },
     {
       "id": "b745",
@@ -140,7 +161,8 @@
         "Bacon",
         "Cheddar"
       ],
-      "status": "Solicitado"
+      "status": "Solicitado",
+      "dataHora": "06/07/2024 19:50:31"
     },
     {
       "id": "5374",
@@ -151,7 +173,8 @@
         "Bacon",
         "Salame"
       ],
-      "status": "Solicitado"
+      "status": "Solicitado",
+      "dataHora": "06/07/2024 19:50:31"
     }
   ]
 }
