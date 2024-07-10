@@ -18,103 +18,147 @@
         "tipo": "Integral"
       }
     ],
-    "status": [
+    "carnes": [
       {
-        "id": "1",
-        "tipo": "Solicitado"
+        "id": 1,
+        "tipo": "Maminha"
       },
       {
-        "id": "2",
-        "tipo": "Em produção"
+        "id": 2,
+        "tipo": "Alcatra"
       },
       {
-        "id": "3",
-        "tipo": "Finalizado"
+        "id": 3,
+        "tipo": "Picanha"
+      },
+      {
+        "id": 4,
+        "tipo": "Veggie burger"
       }
     ],
-    "burgers": [
+    "opcionais": [
       {
-        "id": "e5c4",
-        "nome": "Matheus",
-        "carne": "Maminha",
-        "pao": "Parmesão e Orégano",
-        "opcionais": [
-          "Bacon",
-          "Cheddar"
-        ],
-        "status": "Em produção",
-        "dataHora": "06/07/2024 19:50:31"
+        "id": 1,
+        "tipo": "Bacon"
       },
       {
-        "id": "87ad",
-        "nome": "Matheus",
-        "carne": "Picanha",
-        "pao": "3 Queijos",
-        "opcionais": [
-          "Bacon",
-          "Cheddar",
-          "Cebola roxa",
-          "Tomate"
-        ],
-        "status": "Solicitado",
-        "dataHora": "06/07/2024 19:50:31"
+        "id": 2,
+        "tipo": "Cheddar"
       },
       {
-        "id": "24b3",
-        "nome": "Matheus",
-        "carne": "Picanha",
-        "pao": "3 Queijos",
-        "opcionais": [
-          "Bacon",
-          "Cheddar",
-          "Cebola roxa",
-          "Tomate"
-        ],
-        "status": "Solicitado",
-        "dataHora": "06/07/2024 19:50:31"
+        "id": 3,
+        "tipo": "Salame"
       },
       {
-        "id": "a042",
-        "nome": "Matheus teste ",
-        "pao": "Italiano Branco",
-        "carne": "Maminha",
-        "opcionais": [],
-        "status": "Solicitado",
-        "dataHora": "06/07/2024 19:50:31"
+        "id": 4,
+        "tipo": "Tomate"
       },
       {
-        "id": "a430",
-        "nome": "Teste",
-        "pao": "Italiano Branco",
-        "carne": "Veggie burger",
-        "opcionais": [],
-        "status": "Solicitado",
-        "dataHora": "06/07/2024 19:50:31"
+        "id": 4,
+        "tipo": "Cebola roxa"
       },
       {
-        "id": "b745",
-        "nome": "Jordan",
-        "pao": "Parmesão e Orégano",
-        "carne": "Picanha",
-        "opcionais": [
-          "Bacon",
-          "Cheddar"
-        ],
-        "status": "Solicitado",
-        "dataHora": "06/07/2024 19:50:31"
-      },
-      {
-        "id": "5374",
-        "nome": "Rafael",
-        "pao": "Italiano Branco",
-        "carne": "Maminha",
-        "opcionais": [
-          "Bacon",
-          "Salame"
-        ],
-        "status": "Solicitado",
-        "dataHora": "06/07/2024 19:50:31"
+        "id": 4,
+        "tipo": "Pepino"
       }
     ]
-  }
+  },
+  "status": [
+    {
+      "id": "1",
+      "tipo": "Solicitado"
+    },
+    {
+      "id": "2",
+      "tipo": "Em produção"
+    },
+    {
+      "id": "3",
+      "tipo": "Finalizado"
+    }
+  ],
+  "burgers": [
+    {
+      "id": "e5c4",
+      "nome": "Matheus",
+      "carne": "Maminha",
+      "pao": "Parmesão e Orégano",
+      "opcionais": [
+        "Bacon",
+        "Cheddar"
+      ],
+      "status": "Em produção",
+      "dataHora": "06/07/2024 19:50:31"
+    },
+    {
+      "id": "87ad",
+      "nome": "Matheus",
+      "carne": "Picanha",
+      "pao": "3 Queijos",
+      "opcionais": [
+        "Bacon",
+        "Cheddar",
+        "Cebola roxa",
+        "Tomate"
+      ],
+      "status": "Solicitado",
+      "dataHora": "06/07/2024 19:50:31"
+    },
+    {
+      "id": "24b3",
+      "nome": "Matheus",
+      "carne": "Picanha",
+      "pao": "3 Queijos",
+      "opcionais": [
+        "Bacon",
+        "Cheddar",
+        "Cebola roxa",
+        "Tomate"
+      ],
+      "status": "Solicitado",
+      "dataHora": "06/07/2024 19:50:31"
+    },
+    {
+      "id": "a042",
+      "nome": "Matheus teste ",
+      "pao": "Italiano Branco",
+      "carne": "Maminha",
+      "opcionais": [],
+      "status": "Solicitado",
+      "dataHora": "06/07/2024 19:50:31"
+    },
+    {
+      "id": "a430",
+      "nome": "Teste",
+      "pao": "Italiano Branco",
+      "carne": "Veggie burger",
+      "opcionais": [],
+      "status": "Solicitado",
+      "dataHora": "06/07/2024 19:50:31"
+    },
+    {
+      "id": "b745",
+      "nome": "Jordan",
+      "pao": "Parmesão e Orégano",
+      "carne": "Picanha",
+      "opcionais": [
+        "Bacon",
+        "Cheddar"
+      ],
+      "status": "Solicitado",
+      "dataHora": "06/07/2024 19:50:31"
+    },
+    {
+      "id": "5374",
+      "nome": "Rafael",
+      "pao": "Italiano Branco",
+      "carne": "Maminha",
+      "opcionais": [
+        "Bacon",
+        "Salame"
+      ],
+      "status": "Solicitado",
+      "dataHora": "06/07/2024 19:50:31"
+    }
+  ]
 }
