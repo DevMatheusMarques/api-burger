@@ -3,63 +3,77 @@
     "paes": [
       {
         "id": 1,
-        "tipo": "Italiano Branco"
+        "tipo": "Italiano Branco",
+        "quantidade": 20
       },
       {
         "id": 2,
-        "tipo": "3 Queijos"
+        "tipo": "3 Queijos",
+        "quantidade": 25
       },
       {
         "id": 3,
-        "tipo": "Parmesão e Orégano"
+        "tipo": "Parmesão e Orégano",
+        "quantidade": 22
       },
       {
         "id": 4,
-        "tipo": "Integral"
+        "tipo": "Integral",
+        "quantidade": 18
       }
     ],
     "carnes": [
       {
         "id": 1,
-        "tipo": "Maminha"
+        "tipo": "Maminha",
+        "quantidade": 22
       },
       {
         "id": 2,
-        "tipo": "Alcatra"
+        "tipo": "Alcatra",
+        "quantidade": 19
       },
       {
         "id": 3,
-        "tipo": "Picanha"
+        "tipo": "Picanha",
+        "quantidade": 16
       },
       {
         "id": 4,
-        "tipo": "Veggie burger"
+        "tipo": "Veggie burger",
+        "quantidade": 12
       }
     ],
     "opcionais": [
       {
         "id": 1,
-        "tipo": "Bacon"
+        "tipo": "Bacon",
+        "quantidade": 20
       },
       {
         "id": 2,
-        "tipo": "Cheddar"
+        "tipo": "Cheddar",
+        "quantidade": 22
       },
       {
         "id": 3,
-        "tipo": "Salame"
+        "tipo": "Salame",
+        "quantidade": 25
       },
       {
         "id": 4,
-        "tipo": "Tomate"
+        "tipo": "Tomate",
+        "quantidade": 19
       },
       {
         "id": 4,
-        "tipo": "Cebola roxa"
+        "tipo": "Cebola roxa",
+        "quantidade": 16
       },
       {
         "id": 4,
-        "tipo": "Pepino"
+        "tipo": "Pepino",
+        "quantidade": 21
       }
     ]
   },
