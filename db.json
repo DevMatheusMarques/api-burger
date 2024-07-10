@@ -1,81 +1,8 @@
 {
   "ingredientes": {
-    "paes": [
-      {
-        "id": 1,
-        "tipo": "Italiano Branco",
-        "quantidade": 20
-      },
-      {
-        "id": 2,
-        "tipo": "3 Queijos",
-        "quantidade": 15
-      },
-      {
-        "id": 3,
-        "tipo": "Parmesão e Orégano",
-        "quantidade": 25
-      },
-      {
-        "id": 4,
-        "tipo": "Integral",
-        "quantidade": 10
-      }
-    ],
-    "carnes": [
-      {
-        "id": 1,
-        "tipo": "Maminha",
-        "quantidade": 20
-      },
-      {
-        "id": 2,
-        "tipo": "Alcatra",
-        "quantidade": 25
-      },
-      {
-        "id": 3,
-        "tipo": "Picanha",
-        "quantidade": 30
-      },
-      {
-        "id": 4,
-        "tipo": "Veggie burger",
-        "quantidade": 16
-      }
-    ],
-    "opcionais": [
-      {
-        "id": 1,
-        "tipo": "Bacon",
-        "quantidade": 20
-      },
-      {
-        "id": 2,
-        "tipo": "Cheddar",
-        "quantidade": 25
-      },
-      {
-        "id": 3,
-        "tipo": "Salame",
-        "quantidade": 18
-      },
-      {
-        "id": 4,
-        "tipo": "Tomate",
-        "quantidade": 22
-      },
-      {
-        "id": 4,
-        "tipo": "Cebola roxa",
-        "quantidade": 24
-      },
-      {
-        "id": 4,
-        "tipo": "Pepino",
-        "quantidade": 12
-      }
-    ]
+    "id": 2,
+    "tipo": "4 Queijos",
+    "quantidade": 15
   },
   "status": [
     {

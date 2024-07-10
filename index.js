@@ -68,7 +68,7 @@ app.put('/ingredientes/:id', (req, res) => {
     const { id } = req.params;
     const updatedIngrediente = req.body;
 
-    const index = data.ingredientes.findIndex(i => i.id == id);
+    const index = data.ingredientes.findIndex(i => i.id === id);
     if (index === -1) {
         return res.status(404).json({ error: 'Ingrediente not found' });
     }
@@ -84,7 +84,7 @@ app.put('/burgers/:id', (req, res) => {
     const { id } = req.params;
     const updatedBurger = req.body;
 
-    const index = data.burgers.findIndex(b => b.id == id);
+    const index = data.burgers.findIndex(b => b.id === id);
     if (index === -1) {
         return res.status(404).json({ error: 'Burger not found' });
     }
@@ -100,7 +100,7 @@ app.put('/status/:id', (req, res) => {
     const { id } = req.params;
     const updatedStatus = req.body;
 
-    const index = data.status.findIndex(s => s.id == id);
+    const index = data.status.findIndex(s => s.id === id);
     if (index === -1) {
         return res.status(404).json({ error: 'Status not found' });
     }
@@ -116,7 +116,7 @@ app.put('/status/:id', (req, res) => {
 app.delete('/ingredientes/:id', (req, res) => {
     const { id } = req.params;
 
-    const index = data.ingredientes.findIndex(i => i.id == id);
+    const index = data.ingredientes.findIndex(i => i.id === id);
     if (index === -1) {
         return res.status(404).json({ error: 'Ingrediente not found' });
     }
@@ -131,7 +131,7 @@ app.delete('/ingredientes/:id', (req, res) => {
 app.delete('/burgers/:id', (req, res) => {
     const { id } = req.params;
 
-    const index = data.burgers.findIndex(b => b.id == id);
+    const index = data.burgers.findIndex(b => b.id === id);
     if (index === -1) {
         return res.status(404).json({ error: 'Burger not found' });
     }
@@ -146,7 +146,7 @@ app.delete('/burgers/:id', (req, res) => {
 app.delete('/status/:id', (req, res) => {
     const { id } = req.params;
 
-    const index = data.status.findIndex(s => s.id == id);
+    const index = data.status.findIndex(s => s.id === id);
     if (index === -1) {
         return res.status(404).json({ error: 'Status not found' });
     }
