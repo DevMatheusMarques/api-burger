@@ -1,82 +1,120 @@
 {
-  "ingredientes": {
-    "paes": [
-      {
-        "id": 1,
-        "tipo": "Italiano Branco",
-        "quantidade": 20
-      },
-      {
-        "id": 2,
-        "tipo": "3 Queijos",
-        "quantidade": 25
-      },
-      {
-        "id": 3,
-        "tipo": "Parmesão e Orégano",
-        "quantidade": 22
-      },
-      {
-        "id": 4,
-        "tipo": "Integral",
-        "quantidade": 18
-      }
-    ],
-    "carnes": [
-      {
-        "id": 1,
-        "tipo": "Maminha",
-        "quantidade": 22
-      },
-      {
-        "id": 2,
-        "tipo": "Alcatra",
-        "quantidade": 19
-      },
-      {
-        "id": 3,
-        "tipo": "Picanha",
-        "quantidade": 16
-      },
-      {
-        "id": 4,
-        "tipo": "Veggie burger",
-        "quantidade": 12
-      }
-    ],
-    "opcionais": [
-      {
-        "id": 1,
-        "tipo": "Bacon",
-        "quantidade": 20
-      },
-      {
-        "id": 2,
-        "tipo": "Cheddar",
-        "quantidade": 22
-      },
-      {
-        "id": 3,
-        "tipo": "Salame",
-        "quantidade": 25
-      },
-      {
-        "id": 4,
-        "tipo": "Tomate",
-        "quantidade": 19
-      },
-      {
-        "id": 4,
-        "tipo": "Cebola roxa",
-        "quantidade": 16
-      },
-      {
-        "id": 4,
-        "tipo": "Pepino",
-        "quantidade": 21
-      }
-    ]
-  },
+  "ingredientes": [
+    {
+      "id": "1",
+      "tipo": "Italiano Branco",
+      "quantidade": 20,
+      "categoria": "Pães"
+    },
+    {
+      "id": "2",
+      "tipo": "3 Queijos",
+      "quantidade": 25,
+      "categoria": "Pães"
+    },
+    {
+      "id": "3",
+      "tipo": "Parmesão e Orégano",
+      "quantidade": 22,
+      "categoria": "Pães"
+    },
+    {
+      "id": "4",
+      "tipo": "Integral",
+      "quantidade": 18,
+      "categoria": "Pães"
+    },
+    {
+      "id": "5",
+      "tipo": "Maminha",
+      "quantidade": 22,
+      "categoria": "Carnes"
+    },
+    {
+      "id": "6",
+      "tipo": "Alcatra",
+      "quantidade": 19,
+      "categoria": "Carnes"
+    },
+    {
+      "id": "7",
+      "tipo": "Picanha",
+      "quantidade": 16,
+      "categoria": "Carnes"
+    },
+    {
+      "id": "8",
+      "tipo": "Veggie burger",
+      "quantidade": 12,
+      "categoria": "Carnes"
+    },
+    {
+      "id": "9",
+      "tipo": "Bacon",
+      "quantidade": 20,
+      "categoria": "Opcionais"
+    },
+    {
+      "id": "10",
+      "tipo": "Cheddar",
+      "quantidade": 22,
+      "categoria": "Opcionais"
+    },
+    {
+      "id": "11",
+      "tipo": "Salame",
+      "quantidade": 25,
+      "categoria": "Opcionais"
+    },
+    {
+      "id": "12",
+      "tipo": "Tomate",
+      "quantidade": 19,
+      "categoria": "Opcionais"
+    },
+    {
+      "id": "13",
+      "tipo": "Cebola roxa",
+      "quantidade": 16,
+      "categoria": "Opcionais"
+    },
+    {
+      "id": "14",
+      "tipo": "Pepino",
+      "quantidade": 21,
+      "categoria": "Opcionais"
+    },
+    {
+      "id": "209f",
+      "tipo": "Mexicano",
+      "quantidade": "15",
+      "categoria": "Pães"
+    },
+    {
+      "id": "07db",
+      "tipo": "Pão de Hamburguer",
+      "quantidade": "15",
+      "categoria": "Pães"
+    },
+    {
+      "id": "a1ac",
+      "tipo": "Frango",
+      "quantidade": "15",
+      "categoria": "Opcionais"
+    },
+    {
+      "id": "00ea",
+      "tipo": "Ovo",
+      "quantidade": "12",
+      "categoria": "Opcionais"
+    },
+    {
+      "id": "7572",
+      "tipo": "Salsicha",
+      "quantidade": "16",
+      "categoria": "Opcionais"
+    }
+  ],
   "status": [
     {
       "id": "1",
@@ -173,6 +211,18 @@
       ],
       "status": "Solicitado",
       "dataHora": "06/07/2024 19:50:31"
+    },
+    {
+      "id": "c596",
+      "nome": "Joana",
+      "pao": "Italiano Branco",
+      "carne": "Alcatra",
+      "opcionais": [
+        "Bacon",
+        "Salame"
+      ],
+      "status": "Solicitado",
+      "dataHora": "10/07/2024 16:52:52"
     }
   ]
 }

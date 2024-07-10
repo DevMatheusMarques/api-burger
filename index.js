@@ -14,7 +14,7 @@ app.use((req, res, next) => {
 
 // GET endpoints
 app.get('/ingredientes', (req, res) => {
-    res.json(data.ingredientes);
+    res.json(data.ingredientes.categorias);
 });
 
 app.get('/burgers', (req, res) => {
@@ -27,7 +27,16 @@ app.get('/status', (req, res) => {
 
 // POST endpoints
 app.post('/ingredientes', (req, res) => {
-    const newIngrediente = req.body;
+    const { tipo, quantidade, categoria } = req.body;
+    const id = data.ingredientes.length ? data.ingredientes[data.ingredientes.length - 1].id + 1 : 1;
+
+    const newIngrediente = {
+        id,
+        tipo,
+        quantidade,
+        categoria
+    };
+
     data.ingredientes.push(newIngrediente);
     fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
         res.status(201).json(newIngrediente);
@@ -68,15 +77,15 @@ app.put('/ingredientes/:id', (req, res) => {
     const { id } = req.params;
     const updatedIngrediente = req.body;
 
-    const index = data.ingredientes.findIndex(i => i.id === id);
+    const index = data.ingredientes.categorias[categoria].findIndex(i => i.id == id);
     if (index === -1) {
         return res.status(404).json({ error: 'Ingrediente not found' });
     }
 
-    data.ingredientes[index] = { ...data.ingredientes[index], ...updatedIngrediente };
+    data.ingredientes.categorias[categoria][index] = { ...data.ingredientes.categorias[categoria][index], ...updatedIngrediente };
 
     fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
-        res.json(data.ingredientes[index]);
+        res.json(data.ingredientes.categorias[categoria][index]);
     });
 });
 
@@ -84,7 +93,7 @@ app.put('/burgers/:id', (req, res) => {
     const { id } = req.params;
     const updatedBurger = req.body;
 
-    const index = data.burgers.findIndex(b => b.id === id);
+    const index = data.burgers.findIndex(b => b.id == id);
     if (index === -1) {
         return res.status(404).json({ error: 'Burger not found' });
     }
@@ -100,7 +109,7 @@ app.put('/status/:id', (req, res) => {
     const { id } = req.params;
     const updatedStatus = req.body;
 
-    const index = data.status.findIndex(s => s.id === id);
+    const index = data.status.findIndex(s => s.id == id);
     if (index === -1) {
         return res.status(404).json({ error: 'Status not found' });
     }
@@ -116,7 +125,8 @@ app.put('/status/:id', (req, res) => {
 app.delete('/ingredientes/:id', (req, res) => {
     const { id } = req.params;
 
-    const index = data.ingredientes.findIndex(i => i.id === id);
+    // const index = data.ingredientes.categorias[categoria].findIndex(i => i.id == id);
+    const index = data.ingredientes.findIndex(i => i.id == id);
     if (index === -1) {
         return res.status(404).json({ error: 'Ingrediente not found' });
     }
@@ -131,7 +141,7 @@ app.delete('/ingredientes/:id', (req, res) => {
 app.delete('/burgers/:id', (req, res) => {
     const { id } = req.params;
 
-    const index = data.burgers.findIndex(b => b.id === id);
+    const index = data.burgers.findIndex(b => b.id == id);
     if (index === -1) {
         return res.status(404).json({ error: 'Burger not found' });
     }
@@ -146,7 +156,7 @@ app.delete('/burgers/:id', (req, res) => {
 app.delete('/status/:id', (req, res) => {
     const { id } = req.params;
 
-    const index = data.status.findIndex(s => s.id === id);
+    const index = data.status.findIndex(s => s.id == id);
     if (index === -1) {
         return res.status(404).json({ error: 'Status not found' });
     }
