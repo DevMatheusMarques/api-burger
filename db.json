@@ -113,6 +113,12 @@
       "tipo": "Salsicha",
       "quantidade": "16",
       "categoria": "Opcionais"
+    },
+    {
+      "id": "65ad",
+      "tipo": "Azeitona",
+      "quantidade": "15",
+      "categoria": "Opcionais"
     }
   ],
   "status": [

@@ -14,7 +14,7 @@ app.use((req, res, next) => {
 
 // GET endpoints
 app.get('/ingredientes', (req, res) => {
-    res.json(data.ingredientes.categorias);
+    res.json(data.ingredientes);
 });
 
 app.get('/burgers', (req, res) => {
