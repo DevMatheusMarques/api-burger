@@ -77,15 +77,15 @@ app.put('/ingredientes/:id', (req, res) => {
     const { id } = req.params;
     const updatedIngrediente = req.body;
 
-    const index = data.ingredientes.categorias[categoria].findIndex(i => i.id == id);
+    const index = data.ingredientes.findIndex(i => i.id == id);
     if (index === -1) {
         return res.status(404).json({ error: 'Ingrediente not found' });
     }
 
-    data.ingredientes.categorias[categoria][index] = { ...data.ingredientes.categorias[categoria][index], ...updatedIngrediente };
+    data.ingredientes[index] = { ...data.ingredientes[index], ...updatedIngrediente };
 
     fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
-        res.json(data.ingredientes.categorias[categoria][index]);
+        res.json(data.ingredientes[index]);
     });
 });
 
