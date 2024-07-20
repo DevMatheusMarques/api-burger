@@ -50,6 +50,10 @@ app.get('/status', (req, res) => {
     res.json(data.status);
 });
 
+app.get('/users', (req, res) => {
+    res.json(data.users);
+});
+
 // POST endpoints
 app.post('/ingredientes', authenticateToken, authorizeRole('admin'), (req, res) => {
     const { tipo, quantidade, categoria } = req.body;
