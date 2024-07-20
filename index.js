@@ -53,7 +53,7 @@ app.get('/status', authenticateToken, authorizeRole('admin', 'waiter'), (req, re
     res.json(data.status);
 });
 
-app.get('/users', authenticateToken, authorizeRole('admin', 'waiter'), (req, res) => {
+app.get('/users', (req, res) => {
     res.json(data.users);
 });
 
