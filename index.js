@@ -41,19 +41,19 @@ app.use((req, res, next) => {
 });
 
 // GET endpoints
-app.get('/ingredientes', authenticateToken, (req, res) => {
+app.get('/ingredientes', authenticateToken, authorizeRole('admin', 'waiter'), (req, res) => {
     res.json(data.ingredientes);
 });
 
-app.get('/burgers', authenticateToken, (req, res) => {
+app.get('/burgers', authenticateToken, authorizeRole('admin', 'waiter'), (req, res) => {
     res.json(data.burgers);
 });
 
-app.get('/status', authenticateToken, (req, res) => {
+app.get('/status', authenticateToken, authorizeRole('admin', 'waiter'), (req, res) => {
     res.json(data.status);
 });
 
-app.get('/users', authenticateToken, (req, res) => {
+app.get('/users', authenticateToken, authorizeRole('admin', 'waiter'), (req, res) => {
     res.json(data.users);
 });
 
