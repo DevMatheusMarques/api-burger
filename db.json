@@ -230,5 +230,19 @@
       "status": "Solicitado",
       "dataHora": "10/07/2024 16:52:52"
     }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "$2b$10$examplehash",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "username": "waiter",
+      "password": "$2b$10$examplehash",
+      "role": "waiter"
+    }
   ]
 }

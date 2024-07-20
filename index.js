@@ -4,6 +4,31 @@ const fs = require('fs');
 const app = express();
 let data = require('./db.json');
 
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+
+const SECRET_KEY = 'api_burgers_key'; // Use uma chave secreta forte
+
+function authenticateToken(req, res, next) {
+    const token = req.headers['authorization'];
+    if (!token) return res.sendStatus(401);
+
+    jwt.verify(token, SECRET_KEY, (err, user) => {
+        if (err) return res.sendStatus(403);
+        req.user = user;
+        next();
+    });
+}
+
+function authorizeRole(...roles) {
+    return (req, res, next) => {
+        if (!roles.includes(req.user.role)) {
+            return res.sendStatus(403);
+        }
+        next();
+    };
+}
+
 app.use(cors());
 app.use(express.json());
 
@@ -26,7 +51,7 @@ app.get('/status', (req, res) => {
 });
 
 // POST endpoints
-app.post('/ingredientes', (req, res) => {
+app.post('/ingredientes', authenticateToken, authorizeRole('admin'), (req, res) => {
     const { tipo, quantidade, categoria } = req.body;
     const id = data.ingredientes.length ? data.ingredientes[data.ingredientes.length - 1].id + 1 : 1;
 
@@ -43,7 +68,7 @@ app.post('/ingredientes', (req, res) => {
     });
 });
 
-app.post('/burgers', (req, res) => {
+app.post('/burgers', authenticateToken, authorizeRole('admin', 'waiter'), (req, res) => {
     const { nome, pao, carne, opcionais, status, dataHora } = req.body;
     const id = data.burgers.length ? data.burgers[data.burgers.length - 1].id + 1 : 1;
 
@@ -64,7 +89,7 @@ app.post('/burgers', (req, res) => {
     });
 });
 
-app.post('/status', (req, res) => {
+app.post('/status', authenticateToken, authorizeRole('admin'), (req, res) => {
     const newStatus = req.body;
     data.status.push(newStatus);
     fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
@@ -72,8 +97,38 @@ app.post('/status', (req, res) => {
     });
 });
 
+// Registro de Usuário
+app.post('/register', async (req, res) => {
+    const { username, password, role } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const id = data.users.length ? data.users[data.users.length - 1].id + 1 : 1;
+
+    const newUser = { id, username, password: hashedPassword, role };
+    data.users.push(newUser);
+
+    fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
+        res.status(201).json(newUser);
+    });
+});
+
+// Login de Usuário
+app.post('/login', (req, res) => {
+    const { username, password } = req.body;
+    const user = data.users.find(user => user.username === username);
+    if (!user) return res.sendStatus(400);
+
+    bcrypt.compare(password, user.password, (err, isMatch) => {
+        if (err) throw err;
+        if (!isMatch) return res.sendStatus(403);
+
+        const token = jwt.sign({ username: user.username, role: user.role }, SECRET_KEY);
+        res.json({ token });
+    });
+});
+
+
 // PUT endpoints
-app.put('/ingredientes/:id', (req, res) => {
+app.put('/ingredientes/:id', authenticateToken, authorizeRole('admin'), (req, res) => {
     const { id } = req.params;
     const updatedIngrediente = req.body;
 
@@ -89,7 +144,7 @@ app.put('/ingredientes/:id', (req, res) => {
     });
 });
 
-app.put('/burgers/:id', (req, res) => {
+app.put('/burgers/:id', authenticateToken, authorizeRole('admin'), (req, res) => {
     const { id } = req.params;
     const updatedBurger = req.body;
 
@@ -105,7 +160,7 @@ app.put('/burgers/:id', (req, res) => {
     });
 });
 
-app.put('/status/:id', (req, res) => {
+app.put('/status/:id', authenticateToken, authorizeRole('admin'), (req, res) => {
     const { id } = req.params;
     const updatedStatus = req.body;
 
@@ -122,7 +177,7 @@ app.put('/status/:id', (req, res) => {
 });
 
 // DELETE endpoints
-app.delete('/ingredientes/:id', (req, res) => {
+app.delete('/ingredientes/:id', authenticateToken, authorizeRole('admin'), (req, res) => {
     const { id } = req.params;
 
     // const index = data.ingredientes.categorias[categoria].findIndex(i => i.id == id);
@@ -138,7 +193,7 @@ app.delete('/ingredientes/:id', (req, res) => {
     });
 });
 
-app.delete('/burgers/:id', (req, res) => {
+app.delete('/burgers/:id', authenticateToken, authorizeRole('admin'), (req, res) => {
     const { id } = req.params;
 
     const index = data.burgers.findIndex(b => b.id == id);
@@ -153,7 +208,7 @@ app.delete('/burgers/:id', (req, res) => {
     });
 });
 
-app.delete('/status/:id', (req, res) => {
+app.delete('/status/:id', authenticateToken, authorizeRole('admin'), (req, res) => {
     const { id } = req.params;
 
     const index = data.status.findIndex(s => s.id == id);
