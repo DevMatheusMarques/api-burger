@@ -41,19 +41,19 @@ app.use((req, res, next) => {
 });
 
 // GET endpoints
-app.get('/ingredientes', (req, res) => {
+app.get('/ingredientes', authenticateToken, (req, res) => {
     res.json(data.ingredientes);
 });
 
-app.get('/burgers', (req, res) => {
+app.get('/burgers', authenticateToken, (req, res) => {
     res.json(data.burgers);
 });
 
-app.get('/status', (req, res) => {
+app.get('/status', authenticateToken, (req, res) => {
     res.json(data.status);
 });
 
-app.get('/users', (req, res) => {
+app.get('/users', authenticateToken, (req, res) => {
     res.json(data.users);
 });
 
