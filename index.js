@@ -14,7 +14,10 @@ function authenticateToken(req, res, next) {
     if (!token) return res.sendStatus(401);
 
     jwt.verify(token, SECRET_KEY, (err, user) => {
-        if (err) return res.sendStatus(403);
+        if (err) {
+            console.error('Token verification failed:', err);
+            return res.sendStatus(403);
+        }
         req.user = user;
         next();
     });
@@ -23,7 +26,7 @@ function authenticateToken(req, res, next) {
 function authorizeRole(...roles) {
     return (req, res, next) => {
         if (!roles.includes(req.user.role)) {
-            return res.sendStatus(403);
+            return res.status(403).json({ error: 'Forbidden: insufficient role' });
         }
         next();
     };
@@ -104,6 +107,10 @@ app.post('/status', authenticateToken, authorizeRole('admin'), (req, res) => {
 // Registro de Usuário
 app.post('/register', async (req, res) => {
     const { username, password, role } = req.body;
+    const existingUser = data.users.find(user => user.username === username);
+    if (existingUser) {
+        return res.status(400).json({ error: 'User already exists' });
+    }
     const hashedPassword = await bcrypt.hash(password, 10);
     const id = data.users.length ? data.users[data.users.length - 1].id + 1 : 1;
 
@@ -114,6 +121,7 @@ app.post('/register', async (req, res) => {
         res.status(201).json(newUser);
     });
 });
+
 
 // Login de Usuário
 app.post('/login', (req, res) => {
