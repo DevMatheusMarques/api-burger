@@ -41,12 +41,21 @@ app.use((req, res, next) => {
 });
 
 // GET endpoints
-app.get('/ingredientes', authenticateToken, authorizeRole('admin', 'waiter'), (req, res) => {
-    res.json(data.ingredientes);
+
+// app.get('/ingredients', authenticateToken, authorizeRole('admin', 'waiter'), (req, res) => {
+//     res.json(data.ingredients);
+// });
+
+app.get('/ingredients', authenticateToken, authorizeRole('admin', 'waiter'), (req, res) => {
+    res.json(data.ingredients);
 });
 
-app.get('/burgers', authenticateToken, authorizeRole('admin', 'waiter'), (req, res) => {
+app.get('/burgers', (req, res) => {
     res.json(data.burgers);
+});
+
+app.get('/requests', (req, res) => {
+    res.json(data.requests);
 });
 
 app.get('/status', authenticateToken, authorizeRole('admin', 'waiter'), (req, res) => {
@@ -58,28 +67,46 @@ app.get('/users', (req, res) => {
 });
 
 // POST endpoints
-app.post('/ingredientes', authenticateToken, authorizeRole('admin'), (req, res) => {
+app.post('/ingredients', authenticateToken, authorizeRole('admin'), (req, res) => {
     const { tipo, quantidade, categoria } = req.body;
-    const id = data.ingredientes.length ? data.ingredientes[data.ingredientes.length - 1].id + 1 : 1;
+    const id = data.ingredients.length ? data.ingredients[data.ingredients.length - 1].id + 1 : 1;
 
-    const newIngrediente = {
+    const newIngredient = {
         id,
         tipo,
         quantidade,
         categoria
     };
 
-    data.ingredientes.push(newIngrediente);
+    data.ingredients.push(newIngredient);
     fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
-        res.status(201).json(newIngrediente);
+        res.status(201).json(newIngredient);
     });
 });
 
 app.post('/burgers', authenticateToken, authorizeRole('admin', 'waiter'), (req, res) => {
-    const { nome, pao, carne, opcionais, status, dataHora } = req.body;
+    const { nome, descricao, preco } = req.body;
     const id = data.burgers.length ? data.burgers[data.burgers.length - 1].id + 1 : 1;
 
     const newBurger = {
+        id,
+        nome,
+        descricao,
+        preco
+    };
+
+    data.burgers.push(newBurger);
+
+    fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
+        res.status(201).json(newBurger);
+    });
+});
+
+app.post('/requests', authenticateToken, authorizeRole('admin', 'waiter'), (req, res) => {
+    const { nome, pao, carne, opcionais, status, dataHora } = req.body;
+    const id = data.requests.length ? data.requests[data.requests.length - 1].id + 1 : 1;
+
+    const newRequest = {
         id,
         nome,
         carne,
@@ -89,10 +116,10 @@ app.post('/burgers', authenticateToken, authorizeRole('admin', 'waiter'), (req, 
         dataHora
     };
 
-    data.burgers.push(newBurger);
+    data.requests.push(newRequest);
 
     fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
-        res.status(201).json(newBurger);
+        res.status(201).json(newRequest);
     });
 });
 
@@ -140,19 +167,19 @@ app.post('/login', (req, res) => {
 
 
 // PUT endpoints
-app.put('/ingredientes/:id', authenticateToken, authorizeRole('admin'), (req, res) => {
+app.put('/ingredients/:id', authenticateToken, authorizeRole('admin'), (req, res) => {
     const { id } = req.params;
-    const updatedIngrediente = req.body;
+    const updatedIngredients = req.body;
 
-    const index = data.ingredientes.findIndex(i => i.id == id);
+    const index = data.ingredients.findIndex(i => i.id == id);
     if (index === -1) {
-        return res.status(404).json({ error: 'Ingrediente not found' });
+        return res.status(404).json({ error: 'Ingredients not found' });
     }
 
-    data.ingredientes[index] = { ...data.ingredientes[index], ...updatedIngrediente };
+    data.ingredients[index] = { ...data.ingredients[index], ...updatedIngredients };
 
     fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
-        res.json(data.ingredientes[index]);
+        res.json(data.ingredients[index]);
     });
 });
 
@@ -169,6 +196,22 @@ app.put('/burgers/:id', authenticateToken, authorizeRole('admin'), (req, res) =>
 
     fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
         res.json(data.burgers[index]);
+    });
+});
+
+app.put('/requests/:id', authenticateToken, authorizeRole('admin'), (req, res) => {
+    const { id } = req.params;
+    const updatedRequest = req.body;
+
+    const index = data.requests.findIndex(b => b.id == id);
+    if (index === -1) {
+        return res.status(404).json({ error: 'Request not found' });
+    }
+
+    data.requests[index] = { ...data.requests[index], ...updatedRequest };
+
+    fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
+        res.json(data.requests[index]);
     });
 });
 
@@ -189,19 +232,19 @@ app.put('/status/:id', authenticateToken, authorizeRole('admin'), (req, res) => 
 });
 
 // DELETE endpoints
-app.delete('/ingredientes/:id', authenticateToken, authorizeRole('admin'), (req, res) => {
+app.delete('/ingredients/:id', authenticateToken, authorizeRole('admin'), (req, res) => {
     const { id } = req.params;
 
-    // const index = data.ingredientes.categorias[categoria].findIndex(i => i.id == id);
-    const index = data.ingredientes.findIndex(i => i.id == id);
+    // const index = data.ingredients.categorias[categoria].findIndex(i => i.id == id);
+    const index = data.ingredients.findIndex(i => i.id == id);
     if (index === -1) {
-        return res.status(404).json({ error: 'Ingrediente not found' });
+        return res.status(404).json({ error: 'Ingredients not found' });
     }
 
-    const deletedIngrediente = data.ingredientes.splice(index, 1);
+    const deletedIngredient = data.ingredients.splice(index, 1);
 
     fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
-        res.json(deletedIngrediente);
+        res.json(deletedIngredient);
     });
 });
 
@@ -217,6 +260,21 @@ app.delete('/burgers/:id', authenticateToken, authorizeRole('admin'), (req, res)
 
     fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
         res.json(deletedBurger);
+    });
+});
+
+app.delete('/requests/:id', authenticateToken, authorizeRole('admin'), (req, res) => {
+    const { id } = req.params;
+
+    const index = data.requests.findIndex(b => b.id == id);
+    if (index === -1) {
+        return res.status(404).json({ error: 'Request not found' });
+    }
+
+    const deletedRequest = data.requests.splice(index, 1);
+
+    fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
+        res.json(deletedRequest);
     });
 });
 

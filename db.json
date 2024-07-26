@@ -1,5 +1,5 @@
 {
-  "ingredientes": [
+  "ingredients": [
     {
       "id": "1",
       "tipo": "Italiano Branco",
@@ -136,6 +136,56 @@
     }
   ],
   "burgers": [
+    {
+      "id": "1",
+      "nome": "Burguer Smash",
+      "descricao": "Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.",
+      "preco": "18.90"
+    },
+    {
+      "id": "2",
+      "nome": "Burguer Duplo",
+      "descricao": "Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.",
+      "preco": "32.90"
+    },
+    {
+      "id": "3",
+      "nome": "Burguer da Casa",
+      "descricao": "Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.",
+      "preco": "35.90"
+    },
+    {
+      "id": "4",
+      "nome": "Burguer Salada",
+      "descricao": "Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.",
+      "preco": "30.00"
+    },
+    {
+      "id": "5",
+      "nome": "Burguer da Galera",
+      "descricao": "Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.",
+      "preco": "26.00"
+    },
+    {
+      "id": "6",
+      "nome": "Burguer Saboroso",
+      "descricao": "Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.",
+      "preco": "23.00"
+    },
+    {
+      "id": "7",
+      "nome": "Burguer Tradicional",
+      "descricao": "Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.",
+      "preco": "22.00"
+    },
+    {
+      "id": "8",
+      "nome": "Burguer Especial",
+      "descricao": "Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.",
+      "preco": "30.00"
+    }
+  ],
+  "requests": [
     {
       "id": "e5c4",
       "nome": "Matheus",
