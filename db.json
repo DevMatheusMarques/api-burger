@@ -284,14 +284,14 @@
   "users": [
     {
       "id": 1,
-      "username": "admin",
-      "password": "$2b$10$examplehash",
+      "username": "Matheus",
+      "password": "$2b$10$bx8FPQRaxu.eVurReLo0nOLa1iUEY/9SXRqFJfXj/2gob8ed6kyYW",
       "role": "admin"
     },
     {
       "id": 2,
-      "username": "waiter",
-      "password": "$2b$10$examplehash",
+      "username": "Teste",
+      "password": "$2b$10$M5FqbwGkTg928d1zNgCEpOo9QKt8rTh69ULbqhNsf3DDX3U0iAatO",
       "role": "waiter"
     }
   ]
