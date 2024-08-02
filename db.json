@@ -138,7 +138,7 @@
   "burgers": [
     {
       "id": "1",
-      "src": "'public/assets/hamb-1.png'",
+      "src": "/assets/hamb-1.png",
       "alt": "Burguer Smash",
       "nome": "Burguer Smash",
       "descricao": "Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.",
@@ -146,7 +146,7 @@
     },
     {
       "id": "2",
-      "src": "'public/assets/hamb-2.png'",
+      "src": "/assets/hamb-2.png",
       "alt": "Burguer Duplo",
       "nome": "Burguer Duplo",
       "descricao": "Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.",
@@ -154,7 +154,7 @@
     },
     {
       "id": "3",
-      "src": "'public/assets/hamb-3.png'",
+      "src": "/assets/hamb-3.png",
       "alt": "Burguer da Casa",
       "nome": "Burguer da Casa",
       "descricao": "Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.",
@@ -162,7 +162,7 @@
     },
     {
       "id": "4",
-      "src": "'public/assets/hamb-4.png'",
+      "src": "/assets/hamb-4.png",
       "alt": "Burguer Salada",
       "nome": "Burguer Salada",
       "descricao": "Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.",
@@ -170,7 +170,7 @@
     },
     {
       "id": "5",
-      "src": "'public/assets/hamb-5.png'",
+      "src": "/assets/hamb-5.png",
       "alt": "Burguer da Galera",
       "nome": "Burguer da Galera",
       "descricao": "Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.",
@@ -178,7 +178,7 @@
     },
     {
       "id": "6",
-      "src": "'public/assets/hamb-6.png'",
+      "src": "/assets/hamb-6.png",
       "alt": "Burguer Saboroso",
       "nome": "Burguer Saboroso",
       "descricao": "Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.",
@@ -186,7 +186,7 @@
     },
     {
       "id": "7",
-      "src": "'public/assets/hamb-7.png'",
+      "src": "/assets/hamb-7.png",
       "alt": "Burguer Tradicional",
       "nome": "Burguer Tradicional",
       "descricao": "Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.",
@@ -194,7 +194,7 @@
     },
     {
       "id": "8",
-      "src": "'public/assets/hamb-8.png'",
+      "src": "/assets/hamb-8.png",
       "alt": "Burguer Especial",
       "nome": "Burguer Especial",
       "descricao": "Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.",
@@ -204,7 +204,7 @@
   "drinks": [
     {
       "id": "1",
-      "src": "'public/assets/refri-1.png'",
+      "src": "/assets/refri-1.png'",
       "alt": "Coca-Cola Lata 350ml",
       "nome": "Coca-Cola Lata 350ml",
       "descricao": "Refrigerante Coca-Cola Lata 350ml",
@@ -213,7 +213,7 @@
     },
     {
       "id": "2",
-      "src": "'public/assets/refri-2.png'",
+      "src": "/assets/refri-2.png'",
       "alt": "Guaraná Antartica Lata 350ml",
       "nome": "Guaraná Antartica Lata 350ml",
       "descricao": "Refrigerante Guaraná Antartica Lata 350ml",
