@@ -204,7 +204,7 @@
   "drinks": [
     {
       "id": "1",
-      "src": "/assets/refri-1.png'",
+      "src": "/assets/refri-1.png",
       "alt": "Coca-Cola Lata 350ml",
       "nome": "Coca-Cola Lata 350ml",
       "descricao": "Refrigerante Coca-Cola Lata 350ml",
@@ -213,7 +213,7 @@
     },
     {
       "id": "2",
-      "src": "/assets/refri-2.png'",
+      "src": "/assets/refri-2.png",
       "alt": "Guaraná Antartica Lata 350ml",
       "nome": "Guaraná Antartica Lata 350ml",
       "descricao": "Refrigerante Guaraná Antartica Lata 350ml",
