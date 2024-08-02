@@ -173,10 +173,6 @@ app.post('/requests-online',(req, res) => {
     data.requests.push(newRequestOnline);
 
     fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
-        if (err) {
-            console.error('Error writing to file', err);
-            return res.status(500).json({ error: 'Internal Server Error' });
-        }
         res.status(201).json(newRequestOnline);
     });
 });
