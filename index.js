@@ -150,7 +150,7 @@ app.post('/requests', authenticateToken, authorizeRole('admin', 'waiter'), (req,
     });
 });
 
-app.post('/requests-online', authenticateToken, authorizeRole('admin', 'waiter'), (req, res) => {
+app.post('/requests-online',(req, res) => {
     const { name, telephone, delivery, observation, burgers, drinks, status, dataHora } = req.body;
     const id = data.requests.length ? data.requests[data.requests.length - 1].id + 1 : 1;
 
