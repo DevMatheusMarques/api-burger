@@ -54,6 +54,10 @@ app.get('/burgers', (req, res) => {
     res.json(data.burgers);
 });
 
+app.get('/drinks', (req, res) => {
+    res.json(data.drinks);
+});
+
 app.get('/requests', (req, res) => {
     res.json(data.requests);
 });
@@ -99,6 +103,25 @@ app.post('/burgers', authenticateToken, authorizeRole('admin', 'waiter'), (req, 
 
     fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
         res.status(201).json(newBurger);
+    });
+});
+
+app.post('/drinks', authenticateToken, authorizeRole('admin', 'waiter'), (req, res) => {
+    const { nome, descricao, preco, categoria } = req.body;
+    const id = data.drinks.length ? data.drinks[data.drinks.length - 1].id + 1 : 1;
+
+    const newDrink = {
+        id,
+        nome,
+        descricao,
+        preco,
+        categoria
+    };
+
+    data.drinks.push(newDrink);
+
+    fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
+        res.status(201).json(newDrink);
     });
 });
 
@@ -199,6 +222,22 @@ app.put('/burgers/:id', authenticateToken, authorizeRole('admin'), (req, res) =>
     });
 });
 
+app.put('/drinks/:id', authenticateToken, authorizeRole('admin'), (req, res) => {
+    const { id } = req.params;
+    const updatedDrink = req.body;
+
+    const index = data.drinks.findIndex(b => b.id == id);
+    if (index === -1) {
+        return res.status(404).json({ error: 'Drink not found' });
+    }
+
+    data.drinks[index] = { ...data.drinks[index], ...updatedDrink };
+
+    fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
+        res.json(data.drinks[index]);
+    });
+});
+
 app.put('/requests/:id', authenticateToken, authorizeRole('admin'), (req, res) => {
     const { id } = req.params;
     const updatedRequest = req.body;
@@ -260,6 +299,21 @@ app.delete('/burgers/:id', authenticateToken, authorizeRole('admin'), (req, res)
 
     fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
         res.json(deletedBurger);
+    });
+});
+
+app.delete('/drinks/:id', authenticateToken, authorizeRole('admin'), (req, res) => {
+    const { id } = req.params;
+
+    const index = data.drinks.findIndex(b => b.id == id);
+    if (index === -1) {
+        return res.status(404).json({ error: 'Drink not found' });
+    }
+
+    const deletedDrink = data.drinks.splice(index, 1);
+
+    fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
+        res.json(deletedDrink);
     });
 });
 
