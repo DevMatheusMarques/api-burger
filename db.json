@@ -185,6 +185,22 @@
       "preco": "30.00"
     }
   ],
+  "drinks": [
+    {
+      "id": "1",
+      "nome": "Coca-Cola Lata 350ml",
+      "descricao": "Refrigerante Coca-Cola Lata 350ml",
+      "preco": "6.00",
+      "categoria": "Refrigerante"
+    },
+    {
+      "id": "2",
+      "nome": "Guaraná Antartica Lata 350ml",
+      "descricao": "Refrigerante Guaraná Antartica Lata 350ml",
+      "preco": "6.00",
+      "categoria": "Refrigerante"
+    }
+  ],
   "requests": [
     {
       "id": "e5c4",
