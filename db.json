@@ -331,7 +331,13 @@
           "price": 30.00
         }
       ],
-      "drinks": ["Coca-Cola Lata 350ml"],
+      "drinks": [
+        {
+          "name": "Coca-Cola Lata 350ml",
+          "quantity": "2",
+          "price": 6.00
+        }
+      ],
       "status": "Solicitado",
       "dataHora": "10/07/2024 16:52:52"
     }
