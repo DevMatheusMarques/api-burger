@@ -317,6 +317,25 @@
       "dataHora": "10/07/2024 16:52:52"
     }
   ],
+  "requestsOnline": [
+    {
+      "id": "c596",
+      "name": "Joana",
+      "telephone": "21223344101",
+      "delivery": "Rua Teste",
+      "observation": "Teste",
+      "burgers": [
+        {
+          "name": "Burguer Especial",
+          "quantity": "2",
+          "price": 30.00
+        }
+      ],
+      "drinks": ["Coca-Cola Lata 350ml"],
+      "status": "Solicitado",
+      "dataHora": "10/07/2024 16:52:52"
+    }
+  ],
   "users": [
     {
       "id": 1,

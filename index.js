@@ -62,6 +62,10 @@ app.get('/requests', (req, res) => {
     res.json(data.requests);
 });
 
+app.get('/requests-online', (req, res) => {
+    res.json(data.requestsOnline);
+});
+
 app.get('/status', authenticateToken, authorizeRole('admin', 'waiter'), (req, res) => {
     res.json(data.status);
 });
@@ -145,6 +149,38 @@ app.post('/requests', authenticateToken, authorizeRole('admin', 'waiter'), (req,
         res.status(201).json(newRequest);
     });
 });
+
+app.post('/requests-online', authenticateToken, authorizeRole('admin', 'waiter'), (req, res) => {
+    const { name, telephone, delivery, observation, burgers, drinks, status, dataHora } = req.body;
+    const id = data.requests.length ? data.requests[data.requests.length - 1].id + 1 : 1;
+
+    const newRequestOnline = {
+        id,
+        name,
+        telephone,
+        delivery,
+        observation,
+        burgers: burgers.map(burger => ({
+            name: burger.name,
+            quantity: burger.quantity,
+            price: burger.price
+        })),
+        drinks,
+        status,
+        dataHora
+    };
+
+    data.requests.push(newRequestOnline);
+
+    fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
+        if (err) {
+            console.error('Error writing to file', err);
+            return res.status(500).json({ error: 'Internal Server Error' });
+        }
+        res.status(201).json(newRequestOnline);
+    });
+});
+
 
 app.post('/status', authenticateToken, authorizeRole('admin'), (req, res) => {
     const newStatus = req.body;
@@ -254,6 +290,22 @@ app.put('/requests/:id', authenticateToken, authorizeRole('admin'), (req, res) =
     });
 });
 
+app.put('/requests-online/:id', authenticateToken, authorizeRole('admin'), (req, res) => {
+    const { id } = req.params;
+    const updatedRequestOnline = req.body;
+
+    const index = data.requestsOnline.findIndex(b => b.id == id);
+    if (index === -1) {
+        return res.status(404).json({ error: 'Request Online not found' });
+    }
+
+    data.requestsOnline[index] = { ...data.requestsOnline[index], ...updatedRequestOnline };
+
+    fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
+        res.json(data.requestsOnline[index]);
+    });
+});
+
 app.put('/status/:id', authenticateToken, authorizeRole('admin'), (req, res) => {
     const { id } = req.params;
     const updatedStatus = req.body;
@@ -329,6 +381,21 @@ app.delete('/requests/:id', authenticateToken, authorizeRole('admin'), (req, res
 
     fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
         res.json(deletedRequest);
+    });
+});
+
+app.delete('/requests-online/:id', authenticateToken, authorizeRole('admin'), (req, res) => {
+    const { id } = req.params;
+
+    const index = data.requestsOnline.findIndex(b => b.id == id);
+    if (index === -1) {
+        return res.status(404).json({ error: 'Request not found' });
+    }
+
+    const deletedRequestOnline = data.requestsOnline.splice(index, 1);
+
+    fs.writeFile('./db.json', JSON.stringify(data, null, 2), (err) => {
+        res.json(deletedRequestOnline);
     });
 });
 
